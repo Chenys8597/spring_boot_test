@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>用AJAX以JSON方式获取数据</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="通过AJAX获取一个Hero对象---" id="sender">
+
+<div id="messageDiv"></div>
+
+<script>
+    const url = "http://localhost:8444";
+    $('#sender').click(() => {
+        let url = /test";
+
+        $.ajax({ 
+            type: "get",
+            url: url,
+            crossDomain: true,
+            dataType: "json",
+            success: data => {
+                console.log(data);
+                let json = data;
+                let test = json.test;
+                $("#messageDiv").html("测试：" + test);
+            },
+            error: data => {
+                $("#messageDiv").html("跨域失败!!");
+            }
+        });
+    });
+</script>
+</body>
+</html>
